@@ -1,0 +1,44 @@
+<form [formGroup]="parameterForm" (ngSubmit)="submitForm()" novalidate>
+  <div class="form-submit-group">
+    <button type="submit" class="submit-button">
+      Get Updated Game
+    </button>
+    <button type="button" class="expand-button" (click)="toggleExpand()">
+        <i *ngIf="expanded" class="fa fa-caret-up icon-2x" aria-hidden="true"></i>
+        <i *ngIf="!expanded" class="fa fa-caret-down icon-2x" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div formArrayName="expansions" *ngIf="expanded" class="form-control-list">
+    <label *ngFor="let expansion of expansionArray.controls; let i=index" [formGroupName]="i">
+      <input formControlName="isSelected" type="checkbox" />
+      {{expansion.get('name').value}}
+    </label>
+  </div>
+
+  <div class="form-control-group" *ngIf="expanded">
+    <label>
+      Prosperity Expanded Probability:
+      <input formControlName="prosperityExpandedPercentage" type="tel" />
+    </label>
+  </div>
+
+  <div class="form-control-group" *ngIf="expanded">
+    <label>
+      Dark Ages Shelter Probability:
+      <input formControlName="darkAgesShelterPercentage" type="tel" />
+    </label>
+  </div>
+
+  <div class="form-control-group" *ngIf="expanded">
+    <label>
+      Event/Landmark Frequency:
+      <select formControlName="eventFrequency">
+        <option *ngFor="let frequency of eventFrequencies | keys" [value]="frequency.key">
+          {{frequency.value}}
+        </option>
+      </select>
+    </label>
+  </div>
+
+</form>

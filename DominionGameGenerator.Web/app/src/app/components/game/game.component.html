@@ -1,0 +1,53 @@
+<div *ngIf="game | async; let game">
+
+  <div class="container">
+    <h4>
+      Cards:
+    </h4>
+    <ol>
+      <li *ngFor="let card of game.cards">
+        <span class="expansion-name">{{card.expansionName}}:</span> {{card.name}}
+        <ul *ngIf="card.dependentCards.length > 0">
+          <li *ngFor="let dependentCard of card.dependentCards">
+            <span class="expansion-name">{{dependentCard.expansionName}}:</span> {{dependentCard.name}}
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="container" *ngIf="game.events && game.events.length > 0">
+    <h4>
+      Events:
+    </h4>
+    <ul>
+      <li *ngFor="let event of game.events">
+        <span class="expansion-name">{{event.expansionName}}:</span> {{event.name}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="container" *ngIf="game.landmarks && game.landmarks.length > 0">
+    <h4>
+      Landmarks:
+    </h4>
+    <ul>
+      <li *ngFor="let landmark of game.landmarks">
+        <span class="expansion-name">{{landmark.expansionName}}:</span> {{landmark.name}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="container" *ngIf="game.includeProsperityExpandedCards">
+    <p>
+      The Platinum and Colony cards should be included.
+    </p>
+  </div>
+
+  <div class="container" *ngIf="game.includeDarkAgesShelters">
+    <p>
+      The Shelter cards should be used instead of estates in the initial decks of cards.
+    </p>
+  </div>
+
+</div>
