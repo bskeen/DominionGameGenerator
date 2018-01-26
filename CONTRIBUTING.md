@@ -17,6 +17,10 @@ Once you open the solution in Visual Studio, you will need to restore the packag
 
 To set up the front end, navigate to the directory at `DominionGameGenerator.Web\app` in a terminal window, and run `npm install`. The project is configured to output built files in the folder at `DominionGameGenerator.Web\wwwroot`, so if you run `ng build` and then go back to Visual Studio, you should be able to run the server, and you can access the website running at `http://localhost:21294/`.
 
+# Submitting Pull Requests
+
+Please submit all pull requests to the development branch. Production builds will then be merged into the master branch.
+
 # Future Tasks for the Project
 
 Some important tasks that still need to be completed for the project:
